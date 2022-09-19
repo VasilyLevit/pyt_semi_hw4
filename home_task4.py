@@ -3,23 +3,32 @@
 # Пример: k=2 => 2*x² + 4*x + 5 = 0 или x² + 5 = 0 или 10*x² = 0
 
 import random
-k = 2
+k_max = 3
+k = k_max
 
-list_coeff = random.sample(range(0, 10), k+1)
-print(list_coeff)
+list_coeff = random.sample(range(0, 100), k+1)
+
+data = open('file40.txt', 'w')
 
 for coeff in list_coeff:
-    if k > 1:
+    if k == k_max:
         if coeff > 1:
-            print(f'{coeff}*x^{k} +', end = ' ')
+            data.write(str(coeff) + '*x^' + str(k))
         elif coeff == 1:
-            print(f'x^{k} + ', end = ' ')
+            data.write('x^' + str(k))    
+    elif k > 1 and k != k_max:
+        if coeff > 1:
+            data.write(' + ' + str(coeff) + '*x^' + str(k))
+        elif coeff == 1:
+            data.write(' + ' + 'x^' + str(k))
     elif k == 1:
         if coeff > 1:
-            print(f'{coeff}*x +', end = ' ')
+            data.write(' + ' + str(coeff) + '*x')
         elif coeff == 1:
-            print(f'x + ', end = ' ')
+            data.write(' + ' + 'x')
     else:
         if coeff >= 1:
-            print(f'{coeff} = 0')
+            data.write(' + ' + str(coeff))
     k -= 1
+data.write(' = 0')
+data.close
