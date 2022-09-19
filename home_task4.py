@@ -4,7 +4,9 @@
 
 import random
 k = 2
-# result = []
+
+list_coef = random.sample(range(0, 10), k)
+print(list_coef)
 
 for i in range(k, 0, -1):
     coef = random.randint(0,2)
