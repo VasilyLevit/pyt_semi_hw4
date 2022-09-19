@@ -32,8 +32,8 @@ for term in lst_one:
 
 lst_out2 = []
 data = open('file12.txt', 'a')
+i = 0
 for term in lst_two:
-    i = 0
     if 'x^' in term:
         term_spl = term.split('x^')
         lst_out2.append(term_spl[0])
@@ -43,12 +43,12 @@ for term in lst_two:
     elif 'x' in term:
         term_spl = term.split('x')
         lst_out2.append(term_spl[0])
-        data.write(str(int(lst_out1[i+1]) + int(term_spl[0])))
+        data.write(str(int(lst_out1[i]) + int(term_spl[0])))
         data.write('x+')
 
     else:
         lst_out2.append(term)
-        data.write(str(int(lst_out1[i+2]) + int(term)))
+        data.write(str(int(lst_out1[i]) + int(term)))
     i += 1
 
 data.close
