@@ -5,12 +5,21 @@
 import random
 k = 2
 
-list_coef = random.sample(range(0, 10), k)
-print(list_coef)
+list_coeff = random.sample(range(0, 10), k+1)
+print(list_coeff)
 
-for i in range(k, 0, -1):
-    coef = random.randint(0,2)
-    if coef > 1:
-        print(f'{coef}*x^{i} +', end = ' ')
-    elif coef == 1:
-        print(f'x^{i} + ', end = ' ')
+for coeff in list_coeff:
+    if k > 1:
+        if coeff > 1:
+            print(f'{coeff}*x^{k} +', end = ' ')
+        elif coeff == 1:
+            print(f'x^{k} + ', end = ' ')
+    elif k == 1:
+        if coeff > 1:
+            print(f'{coeff}*x +', end = ' ')
+        elif coeff == 1:
+            print(f'x + ', end = ' ')
+    else:
+        if coeff >= 1:
+            print(f'{coeff} = 0')
+    k -= 1
